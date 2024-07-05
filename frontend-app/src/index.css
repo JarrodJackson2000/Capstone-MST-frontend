@@ -66,3 +66,19 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Default light mode styles */
+body {
+  background-color: #ffffff; /* Your light mode background color */
+  color: #000000; /* Your light mode text color */
+  background-image: url("https://images.pexels.com/photos/5412499/pexels-photo-5412499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-position: left;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #ffffff; /* Your dark mode background color */
+    color: #000000; /* Your dark mode text color */
+  }
+}

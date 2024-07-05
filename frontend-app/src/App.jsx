@@ -1,10 +1,11 @@
 import "./App.css";
-import NavBar from "./components/NavBar.jsx";
+
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
     <>
-      <NavBar />
+      <AppRoutes />
     </>
   );
 }
