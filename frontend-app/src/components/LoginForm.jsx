@@ -9,9 +9,15 @@ import {
   Link,
 } from "@mui/material";
 
+import axios from "axios";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setUserContext } = useContext(UserContext);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -21,11 +27,30 @@ const LoginForm = () => {
     setPassword(e.target.value);
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO: Add login logic here
-  };
 
+    // Use axios GET to check if email and password are correct
+    // If email and password are correct, set the user context and redirect to the dashboard
+    // If email and password are incorrect, display an error message
+
+    axios.get(`http://localhost:8080/user/${email}`).then((response) => {
+      console.log(response.data.res._id);
+      console.log(response.data.res.password);
+      if (
+        response.data.res.email === email &&
+        response.data.res.password === password
+      ) {
+        setUserContext(response.data.res._id);
+        navigate("/get-started");
+      } else {
+        alert("Email or password is incorrect.");
+      }
+    });
+  };
   return (
     <Container maxWidth="sm">
       <Box
@@ -53,6 +78,9 @@ const LoginForm = () => {
               "& .MuiOutlinedInput-input.Mui-focused": {
                 color: "green",
               },
+              "& .MuiInputLabel-root.Mui-focused": {
+                color: "green",
+              },
             }}
           />
           <TextField
@@ -69,6 +97,9 @@ const LoginForm = () => {
                   borderColor: "green",
                 },
               "& .MuiOutlinedInput-input.Mui-focused": {
+                color: "green",
+              },
+              "& .MuiInputLabel-root.Mui-focused": {
                 color: "green",
               },
             }}

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -71,27 +72,29 @@ const LandingPageInfo = () => {
               marginTop: "10px",
             }}
           >
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{
-                backgroundColor: "green",
-                borderRadius: "50px",
-                "&:hover": {
-                  backgroundColor: "darkgreen",
-                },
-                "&:active": {
+            <NavLink to="/signup" style={{ textDecoration: "none" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{
                   backgroundColor: "green",
-                },
-                width: "200px", // BEGIN: Increase button width
-                height: "60px", // Increase button height
-                fontSize: "20px", // Increase button font size
-                fontWeight: "bold", // Add bold font weight
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", // Add text shadow
-              }}
-            >
-              Get Started
-            </Button>
+                  borderRadius: "50px",
+                  "&:hover": {
+                    backgroundColor: "darkgreen",
+                  },
+                  "&:active": {
+                    backgroundColor: "green",
+                  },
+                  width: "200px", // BEGIN: Increase button width
+                  height: "60px", // Increase button height
+                  fontSize: "20px", // Increase button font size
+                  fontWeight: "bold", // Add bold font weight
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", // Add text shadow
+                }}
+              >
+                Get Started
+              </Button>
+            </NavLink>
           </Box>
         </Grid>
       </Grid>

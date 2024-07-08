@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 const NavBar = () => {
+  const { userContext } = useContext(UserContext);
+  console.log(userContext);
+
   return (
     <AppBar
       style={{

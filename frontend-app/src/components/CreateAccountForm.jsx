@@ -9,6 +9,9 @@ import {
   Link,
 } from "@mui/material";
 
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 const CreateAccountForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -31,9 +34,36 @@ const CreateAccountForm = () => {
     setPassword(e.target.value);
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // TODO: Add account creation logic here
+
+    // Use axios GET to check if email is already in use
+    // If email is already in use, display an error message
+    // If email is not in use, create the account and redirect to login page
+
+    axios.get(`http://localhost:8080/user/${email}`).then((response) => {
+      if (response.data?.res?.email === email) {
+        alert("Email is already in use.");
+      } else {
+        axios
+          .post("http://localhost:8080/user", {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .then(() => {
+            // Redirect to login page using useNavigate hook
+            navigate("/login");
+          });
+      }
+    });
   };
 
   return (
