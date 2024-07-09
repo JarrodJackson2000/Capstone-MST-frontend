@@ -44,26 +44,28 @@ const CreateAccountForm = () => {
     // If email is already in use, display an error message
     // If email is not in use, create the account and redirect to login page
 
-    axios.get(`http://localhost:8080/user/${email}`).then((response) => {
-      if (response.data?.res?.email === email) {
-        alert("Email is already in use.");
-      } else {
-        axios
-          .post("http://localhost:8080/user", {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            password: password,
-          })
-          .then((response) => {
-            console.log(response);
-          })
-          .then(() => {
-            // Redirect to login page using useNavigate hook
-            navigate("/login");
-          });
-      }
-    });
+    axios
+      .get(`http://localhost:8080/user/${email}?type=string`)
+      .then((response) => {
+        if (response.data?.res?.email === email) {
+          alert("Email is already in use.");
+        } else {
+          axios
+            .post("http://localhost:8080/user", {
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+              password: password,
+            })
+            .then((response) => {
+              console.log(response);
+            })
+            .then(() => {
+              // Redirect to login page using useNavigate hook
+              navigate("/login");
+            });
+        }
+      });
   };
 
   return (

@@ -12,12 +12,16 @@ import {
 import axios from "axios";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+import { UserContext, SubContext, AllSubs } from "../context/UserContext";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUserContext } = useContext(UserContext);
+  const { userContext, setUserContext } = useContext(UserContext);
+  const { userHasSubscriptions, setUserHasSubscriptions } =
+    useContext(SubContext);
+
+  const { allSubs, setAllSubs } = useContext(AllSubs);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -37,20 +41,31 @@ const LoginForm = () => {
     // If email and password are correct, set the user context and redirect to the dashboard
     // If email and password are incorrect, display an error message
 
-    axios.get(`http://localhost:8080/user/${email}`).then((response) => {
-      console.log(response.data.res._id);
-      console.log(response.data.res.password);
-      if (
-        response.data.res.email === email &&
-        response.data.res.password === password
-      ) {
-        setUserContext(response.data.res._id);
-        navigate("/get-started");
-      } else {
-        alert("Email or password is incorrect.");
-      }
-    });
+    axios
+      .get(`http://localhost:8080/user/${email}?type=string`)
+      .then((response) => {
+        console.log(response.data.res._id);
+        console.log(response.data.res.password);
+        if (
+          response.data.res.email === email &&
+          response.data.res.password === password
+        ) {
+          setUserContext(response.data.res._id);
+          navigate("/get-started");
+          axios
+            .get(`http://localhost:8080/subscription/${response.data.res._id}`)
+            .then((response) => {
+              if (response.data.subscriptions.length > 0) {
+                setAllSubs(response.data.subscriptions);
+                setUserHasSubscriptions(true);
+              }
+            });
+        } else {
+          alert("Email or password is incorrect.");
+        }
+      });
   };
+
   return (
     <Container maxWidth="sm">
       <Box

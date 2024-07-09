@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { LoginPage } from "../pages/LoginPage";
 import { CreateAccountPage } from "../pages/CreateAccountPage";
 import { LandingPage } from "../pages/LandingPage";
@@ -12,14 +12,27 @@ import { GetStarted6 } from "../pages/GetStarted6";
 import { GetStarted7 } from "../pages/GetStarted7";
 import { GetStartedCompleted } from "../pages/GetStartedCompleted";
 import { DashboardPage } from "../pages/DashboardPage";
+import { ProfilePage } from "../pages/ProfilePage";
+import { useContext } from "react";
+import { SubContext } from "../context/UserContext";
 
 export default function AppRoutes() {
+  const { userHasSubscriptions } = useContext(SubContext);
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/signup" element={<CreateAccountPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="get-started" element={<GetStartedHome />} />
+      <Route
+        path="get-started"
+        element={
+          userHasSubscriptions ? (
+            <Navigate to="/dashboard" />
+          ) : (
+            <GetStartedHome />
+          )
+        }
+      />
       <Route path="get-started1" element={<GetStarted1 />} />
       <Route path="get-started1/get-started2" element={<GetStarted2 />} />
       <Route
@@ -47,6 +60,7 @@ export default function AppRoutes() {
         element={<GetStartedCompleted />}
       />
       <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="profile" element={<ProfilePage />} />
     </Routes>
   );
 }
