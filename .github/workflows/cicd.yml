@@ -31,6 +31,6 @@ jobs:
         with:
           context: ./frontend-app
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/Capstone-MST-frontend:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/capstone-mst-frontend:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
