@@ -51,11 +51,11 @@ const NavBar = () => {
               backgroundColor: "green",
               color: "white",
               boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-              borderRadius: "50px", // Updated borderRadius to make it more pill-shaped
+              borderRadius: "50px",
               padding: "8px 16px",
               border: "1px solid green",
-              fontWeight: "bold", // Added fontWeight to make the text bold
-              textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)", // Added textShadow to give it a shadow
+              fontWeight: "bold",
+              textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)",
             }}
             sx={{
               "&:focus": {
@@ -65,7 +65,7 @@ const NavBar = () => {
                 border: "1px solid green",
               },
               "&:hover": {
-                backgroundColor: "darkgreen", // Added hover color
+                backgroundColor: "darkgreen",
               },
             }}
           >
