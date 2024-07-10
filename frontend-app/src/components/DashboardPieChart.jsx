@@ -14,7 +14,7 @@ const DashboardPieChart = () => {
   const { userContext } = useContext(UserContext);
   const [allSubscriptions, setAllSubscriptions] = useState([]);
   const [data, setData] = useState([]);
-  const { allSubs, setAllSubs } = useContext(AllSubs);
+  const { allSubs } = useContext(AllSubs);
 
   useEffect(() => {
     axios
@@ -43,7 +43,7 @@ const DashboardPieChart = () => {
       .catch((error) => {
         console.error(error);
       });
-  }, [userContext, allSubs]);
+  }, [allSubs]);
 
   const COLORS = [
     "#0088FE",

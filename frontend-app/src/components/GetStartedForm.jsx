@@ -14,6 +14,9 @@ import { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { UserContext, AllSubs } from "../context/UserContext";
+import { Link } from "react-router-dom"; // Added import for Link
+
+// ...
 
 import { IconButton } from "@mui/material";
 import { Delete } from "@mui/icons-material";
@@ -178,7 +181,16 @@ function GetStartedForm({ category, body1, body2, body3, path }) {
               }}
             />
 
-            <Button variant="contained" color="success" type="submit">
+            <Button
+              variant="contained"
+              color="success"
+              type="submit"
+              sx={{
+                "&:hover": {
+                  backgroundColor: "darkgreen",
+                },
+              }}
+            >
               Add
             </Button>
           </Stack>
@@ -218,9 +230,6 @@ function GetStartedForm({ category, body1, body2, body3, path }) {
                     </Typography>
                     <Typography variant="body1">
                       Cost: ${subscription.cost} per week
-                    </Typography>
-                    <Typography variant="body1">
-                      Category: {subscription.category}
                     </Typography>
                   </Box>
                   <IconButton
@@ -302,6 +311,35 @@ function GetStartedForm({ category, body1, body2, body3, path }) {
             </Typography>
           </Box>
         ) : null}
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginTop: "10px",
+        }}
+      >
+        <Link
+          to={path}
+          style={{
+            textDecoration: "none",
+          }}
+        >
+          <Button
+            variant="contained"
+            sx={{
+              borderRadius: "50px",
+              color: "white",
+              backgroundColor: "green",
+              padding: "10px 20px",
+              "&:hover": {
+                backgroundColor: "darkgreen",
+              },
+            }}
+          >
+            Next
+          </Button>
+        </Link>
       </Box>
     </>
   );

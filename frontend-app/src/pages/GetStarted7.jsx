@@ -7,7 +7,7 @@ function GetStarted7() {
       body1="Meal Delivery Services (e.g., HelloFresh, Blue Apron)"
       body2="Cleaning Services (e.g., Handy, Homeaglow)"
       body3="Maintenance Services (e.g., Angies List, Thumbtack)"
-      path="dashboard"
+      path="get-started-dashboard"
     />
   );
 }

@@ -56,7 +56,7 @@ export default function AppRoutes() {
         element={<GetStarted7 />}
       />
       <Route
-        path="get-started1/get-started2/get-started3/get-started4/get-started5/get-started6/get-started7/dashboard"
+        path="get-started1/get-started2/get-started3/get-started4/get-started5/get-started6/get-started7/get-started-dashboard"
         element={<GetStartedCompleted />}
       />
       <Route path="/dashboard" element={<DashboardPage />} />
