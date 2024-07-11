@@ -3,4 +3,5 @@ WORKDIR /frontend-app
 EXPOSE 5173
 COPY . .
 RUN npm install
-CMD [ "npm", "run", "dev"]
+RUN npm run build
+CMD [ "npx", "--yes", "serve", "-s", "dist", "-l", "5173"]
