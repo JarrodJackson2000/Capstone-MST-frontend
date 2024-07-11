@@ -29,7 +29,9 @@ const ProfileInfo = () => {
   // Fetch user data from the server
   function getData() {
     axios
-      .get(`http://localhost:8080/user/${userContext}?type=objectId`)
+      .get(
+        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/user/${userContext}?type=objectId`
+      )
       .then((response) => {
         console.log(response.data);
         setUserData(response.data);
@@ -59,7 +61,10 @@ const ProfileInfo = () => {
   const handleSave = () => {
     // Update user data using axios.put
     axios
-      .put(`http://localhost:8080/user/${userContext}`, updatedData)
+      .put(
+        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/user/${userContext}`,
+        updatedData
+      )
       .then((response) => {
         setIsEditing(false);
         // Update the displayed user data after successful save

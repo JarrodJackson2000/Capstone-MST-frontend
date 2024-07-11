@@ -42,7 +42,9 @@ const LoginForm = () => {
     // If email and password are incorrect, display an error message
 
     axios
-      .get(`http://localhost:8080/user/${email}?type=string`)
+      .get(
+        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/user/${email}?type=string`
+      )
       .then((response) => {
         console.log(response.data.res._id);
         console.log(response.data.res.password);
@@ -53,7 +55,9 @@ const LoginForm = () => {
           setUserContext(response.data.res._id);
           navigate("/get-started");
           axios
-            .get(`http://localhost:8080/subscription/${response.data.res._id}`)
+            .get(
+              `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${response.data.res._id}`
+            )
             .then((response) => {
               if (response.data.subscriptions.length > 0) {
                 setAllSubs(response.data.subscriptions);

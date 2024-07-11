@@ -12,9 +12,13 @@ function DashboardTotalCost() {
   useEffect(() => {
     // Call the API to get the total cost
     // Set the total cost in the state
-    axios.get(`http://localhost:8080/cost/${userContext}`).then((response) => {
-      setTotalCost(response.data.costs);
-    });
+    axios
+      .get(
+        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/cost/${userContext}`
+      )
+      .then((response) => {
+        setTotalCost(response.data.costs);
+      });
   }, [allSubs]);
 
   const handleViewChange = (newView) => {

@@ -65,7 +65,7 @@ const DashboardSubDisplay = () => {
   const handleSubscriptionDeleted = async (deletedSubscriptionId) => {
     try {
       await axios.delete(
-        `http://localhost:8080/subscription/${deletedSubscriptionId}`
+        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${deletedSubscriptionId}`
       );
       const updatedSubscriptions = subscriptions.filter(
         (subscription) => subscription._id !== deletedSubscriptionId
