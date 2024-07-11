@@ -43,7 +43,7 @@ const LoginForm = () => {
 
     axios
       .get(
-        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/user/${email}?type=string`
+        `http://ec2-3-106-116-28.ap-southeast-2.compute.amazonaws.com:8080/user/${email}?type=string`
       )
       .then((response) => {
         console.log(response.data.res._id);
@@ -56,7 +56,7 @@ const LoginForm = () => {
           navigate("/get-started");
           axios
             .get(
-              `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${response.data.res._id}`
+              `http://ec2-3-106-116-28.ap-southeast-2.compute.amazonaws.com:8080/subscription/${response.data.res._id}`
             )
             .then((response) => {
               if (response.data.subscriptions.length > 0) {

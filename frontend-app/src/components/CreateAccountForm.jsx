@@ -46,7 +46,7 @@ const CreateAccountForm = () => {
 
     axios
       .get(
-        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/user/${email}?type=string`
+        `http://ec2-3-106-116-28.ap-southeast-2.compute.amazonaws.com:8080/user/${email}?type=string`
       )
       .then((response) => {
         if (response.data?.res?.email === email) {
@@ -54,7 +54,7 @@ const CreateAccountForm = () => {
         } else {
           axios
             .post(
-              "http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/user",
+              "http://ec2-3-106-116-28.ap-southeast-2.compute.amazonaws.com:8080/user",
               {
                 firstName: firstName,
                 lastName: lastName,

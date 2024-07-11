@@ -31,7 +31,7 @@ const ProfileInfo = () => {
     if (userContext) {
       axios
         .get(
-          `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/user/${userContext}?type=objectId`
+          `http://ec2-3-106-116-28.ap-southeast-2.compute.amazonaws.com:8080/user/${userContext}?type=objectId`
         )
         .then((response) => {
           console.log(response.data);
@@ -64,7 +64,7 @@ const ProfileInfo = () => {
     // Update user data using axios.put
     axios
       .put(
-        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/user/${userContext}`,
+        `http://ec2-3-106-116-28.ap-southeast-2.compute.amazonaws.com:8080/user/${userContext}`,
         updatedData
       )
       .then((response) => {

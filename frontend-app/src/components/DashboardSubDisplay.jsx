@@ -26,7 +26,7 @@ const DashboardSubDisplay = () => {
       if (userContext) {
         try {
           const response = await axios.get(
-            `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${userContext}`
+            `http://ec2-3-106-116-28.ap-southeast-2.compute.amazonaws.com:8080/subscription/${userContext}`
           );
           setSubscriptions(response.data.subscriptions);
         } catch (error) {
@@ -67,7 +67,7 @@ const DashboardSubDisplay = () => {
   const handleSubscriptionDeleted = async (deletedSubscriptionId) => {
     try {
       await axios.delete(
-        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${deletedSubscriptionId}`
+        `http://ec2-3-106-116-28.ap-southeast-2.compute.amazonaws.com:8080/subscription/${deletedSubscriptionId}`
       );
       const updatedSubscriptions = subscriptions.filter(
         (subscription) => subscription._id !== deletedSubscriptionId
