@@ -28,17 +28,19 @@ const ProfileInfo = () => {
 
   // Fetch user data from the server
   function getData() {
-    axios
-      .get(
-        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/user/${userContext}?type=objectId`
-      )
-      .then((response) => {
-        console.log(response.data);
-        setUserData(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (userContext) {
+      axios
+        .get(
+          `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/user/${userContext}?type=objectId`
+        )
+        .then((response) => {
+          console.log(response.data);
+          setUserData(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   }
 
   const handleEdit = () => {

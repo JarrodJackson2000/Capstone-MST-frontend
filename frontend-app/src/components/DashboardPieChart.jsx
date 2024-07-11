@@ -17,34 +17,36 @@ const DashboardPieChart = () => {
   const { allSubs } = useContext(AllSubs);
 
   useEffect(() => {
-    axios
-      .get(
-        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${userContext}`
-      )
-      .then((response) => {
-        setAllSubscriptions(response.data.subscriptions);
-        const categoryMap = new Map();
-        response.data.subscriptions.forEach((subscription) => {
-          const { category, cost } = subscription;
-          if (categoryMap.has(category)) {
-            categoryMap.set(category, categoryMap.get(category) + cost);
-          } else {
-            categoryMap.set(category, cost);
-          }
+    if (userContext) {
+      axios
+        .get(
+          `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${userContext}`
+        )
+        .then((response) => {
+          setAllSubscriptions(response.data.subscriptions);
+          const categoryMap = new Map();
+          response.data.subscriptions.forEach((subscription) => {
+            const { category, cost } = subscription;
+            if (categoryMap.has(category)) {
+              categoryMap.set(category, categoryMap.get(category) + cost);
+            } else {
+              categoryMap.set(category, cost);
+            }
+          });
+          const totalCost = Array.from(categoryMap.values()).reduce(
+            (a, b) => a + b,
+            0
+          );
+          const newData = Array.from(categoryMap, ([name, value]) => ({
+            name,
+            value,
+          }));
+          setData(newData);
+        })
+        .catch((error) => {
+          console.error(error);
         });
-        const totalCost = Array.from(categoryMap.values()).reduce(
-          (a, b) => a + b,
-          0
-        );
-        const newData = Array.from(categoryMap, ([name, value]) => ({
-          name,
-          value,
-        }));
-        setData(newData);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    }
   }, [allSubs]);
 
   const COLORS = [

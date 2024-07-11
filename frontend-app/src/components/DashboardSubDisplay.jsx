@@ -23,18 +23,20 @@ const DashboardSubDisplay = () => {
 
   useEffect(() => {
     const fetchSubscriptions = async () => {
-      try {
-        const response = await axios.get(
-          `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${userContext}`
-        );
-        setSubscriptions(response.data.subscriptions);
-      } catch (error) {
-        console.error("Error fetching subscriptions:", error);
+      if (userContext) {
+        try {
+          const response = await axios.get(
+            `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${userContext}`
+          );
+          setSubscriptions(response.data.subscriptions);
+        } catch (error) {
+          console.error("Error fetching subscriptions:", error);
+        }
       }
     };
 
     fetchSubscriptions();
-  }, [userContext, allSubs]); // Update useEffect dependencies
+  }, [allSubs, userContext]); // Update useEffect dependencies
 
   useEffect(() => {
     const subscriptionCategories = new Set(
