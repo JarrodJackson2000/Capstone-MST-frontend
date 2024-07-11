@@ -52,11 +52,14 @@ function DashboardAddSubForm() {
     addedSubscriptions.forEach((subscription) => {
       setAllSubs([...allSubs, subscription]);
       axios
-        .post(`http://localhost:8080/subscription/${userContext}`, {
-          title: subscription.name,
-          cost: subscription.cost,
-          category: subscription.category,
-        })
+        .post(
+          `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${userContext}`,
+          {
+            title: subscription.name,
+            cost: subscription.cost,
+            category: subscription.category,
+          }
+        )
         .then((response) => {
           console.log(response);
           setSuccessMessage(true);

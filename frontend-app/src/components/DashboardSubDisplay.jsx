@@ -25,7 +25,7 @@ const DashboardSubDisplay = () => {
     const fetchSubscriptions = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/subscription/${userContext}`
+          `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${userContext}`
         );
         setSubscriptions(response.data.subscriptions);
       } catch (error) {

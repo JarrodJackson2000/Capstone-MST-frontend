@@ -18,7 +18,9 @@ const DashboardPieChart = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/subscription/${userContext}`)
+      .get(
+        `http://ec2-13-211-81-5.ap-southeast-2.compute.amazonaws.com:8080/subscription/${userContext}`
+      )
       .then((response) => {
         setAllSubscriptions(response.data.subscriptions);
         const categoryMap = new Map();
