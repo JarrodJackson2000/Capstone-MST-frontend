@@ -85,11 +85,11 @@ const LandingPageInfo = () => {
                   "&:active": {
                     backgroundColor: "green",
                   },
-                  width: "200px", // BEGIN: Increase button width
-                  height: "60px", // Increase button height
-                  fontSize: "20px", // Increase button font size
-                  fontWeight: "bold", // Add bold font weight
-                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", // Add text shadow
+                  width: "200px",
+                  height: "60px",
+                  fontSize: "20px",
+                  fontWeight: "bold",
+                  textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
                 }}
               >
                 Get Started

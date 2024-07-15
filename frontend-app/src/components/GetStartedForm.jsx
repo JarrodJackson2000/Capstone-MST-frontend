@@ -48,6 +48,7 @@ function GetStartedForm({ category, body1, body2, body3, path }) {
   };
 
   const postSubscriptions = () => {
+    // Post all subscriptions to the backend
     addedSubscriptions.forEach((subscription) => {
       axios
         .post(

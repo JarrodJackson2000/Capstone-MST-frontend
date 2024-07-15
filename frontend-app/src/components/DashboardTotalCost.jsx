@@ -36,6 +36,7 @@ function DashboardTotalCost() {
   };
 
   const renderTotalCost = () => {
+    // Render the total cost based on the view
     if (view === "weekly") {
       return totalCost;
     } else if (view === "monthly") {

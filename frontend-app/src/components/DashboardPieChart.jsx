@@ -17,6 +17,7 @@ const DashboardPieChart = () => {
   const { allSubs } = useContext(AllSubs);
 
   useEffect(() => {
+    // Fetch all subscriptions for the user
     if (userContext) {
       axios
         .get(
@@ -33,6 +34,7 @@ const DashboardPieChart = () => {
               categoryMap.set(category, cost);
             }
           });
+          // Calculate total cost
           const totalCost = Array.from(categoryMap.values()).reduce(
             (a, b) => a + b,
             0

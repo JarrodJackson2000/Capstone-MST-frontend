@@ -22,6 +22,7 @@ const DashboardSubDisplay = () => {
   const { allSubs, setAllSubs } = useContext(AllSubs);
 
   useEffect(() => {
+    // Fetch all subscriptions for the user
     const fetchSubscriptions = async () => {
       if (userContext) {
         try {
@@ -39,6 +40,7 @@ const DashboardSubDisplay = () => {
   }, [allSubs, userContext]); // Update useEffect dependencies
 
   useEffect(() => {
+    // Calculate categories
     const subscriptionCategories = new Set(
       subscriptions.map((subscription) => subscription.category)
     );
@@ -46,6 +48,7 @@ const DashboardSubDisplay = () => {
   }, [subscriptions]);
 
   const calculateCategoryCosts = () => {
+    // Calculate total cost for each category
     const costs = {};
     categories.forEach((category) => {
       const categorySubscriptions = subscriptions.filter(
@@ -65,6 +68,7 @@ const DashboardSubDisplay = () => {
   }, [categories, subscriptions]);
 
   const handleSubscriptionDeleted = async (deletedSubscriptionId) => {
+    // Delete subscription
     try {
       await axios.delete(
         `http://ec2-3-106-116-28.ap-southeast-2.compute.amazonaws.com:8080/subscription/${deletedSubscriptionId}`
@@ -81,6 +85,7 @@ const DashboardSubDisplay = () => {
   };
 
   const renderSubscriptionCards = (category) => {
+    // Render subscription cards for a category
     return subscriptions
       .filter((subscription) => subscription.category === category)
       .map((subscription, index) => (
@@ -105,6 +110,7 @@ const DashboardSubDisplay = () => {
   };
 
   return (
+    // Display subscriptions by category
     <Box
       sx={{
         height: "400px",

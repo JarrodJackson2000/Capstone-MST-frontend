@@ -31,6 +31,7 @@ function DashboardAddSubForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Add subscription to addedSubscriptions
     const name = e.target.elements.name.value;
     const cost = e.target.elements.cost.value;
 
@@ -42,6 +43,7 @@ function DashboardAddSubForm() {
         category: selectedCategory,
       },
     ]);
+    // Clear form fields
     e.target.elements.name.value = "";
     e.target.elements.cost.value = "";
     setSelectedCategory("");
@@ -49,6 +51,7 @@ function DashboardAddSubForm() {
   };
 
   const postSubscriptions = () => {
+    // Post all subscriptions to the backend
     addedSubscriptions.forEach((subscription) => {
       setAllSubs([...allSubs, subscription]);
       axios
@@ -259,10 +262,9 @@ function DashboardAddSubForm() {
                 color: "green",
                 marginLeft: "5px",
                 verticalAlign: "middle",
-                fontSize: "20px", // Add this line to make the checkbox smaller
+                fontSize: "20px",
               }}
             />{" "}
-            {/* Added CheckCircle icon */}
           </Typography>
         </Box>
       ) : null}
