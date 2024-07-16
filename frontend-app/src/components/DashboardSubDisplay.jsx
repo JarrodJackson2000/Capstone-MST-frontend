@@ -37,7 +37,7 @@ const DashboardSubDisplay = () => {
     };
 
     fetchSubscriptions();
-  }, [allSubs, userContext]); // Update useEffect dependencies
+  }, [allSubs]); // Update useEffect dependencies
 
   useEffect(() => {
     // Calculate categories
@@ -65,7 +65,7 @@ const DashboardSubDisplay = () => {
 
   useEffect(() => {
     calculateCategoryCosts();
-  }, [categories, subscriptions]);
+  }, [categories, subscriptions, allSubs]);
 
   const handleSubscriptionDeleted = async (deletedSubscriptionId) => {
     // Delete subscription

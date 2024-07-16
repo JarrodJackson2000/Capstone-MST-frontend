@@ -21,7 +21,7 @@ function DashboardTotalCost() {
           setTotalCost(response.data.costs);
         });
     }
-  }, [userContext, allSubs]);
+  }, [allSubs]);
 
   const handleViewChange = (newView) => {
     setView(newView);
