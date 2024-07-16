@@ -53,7 +53,7 @@ function DashboardAddSubForm() {
   const postSubscriptions = () => {
     // Post all subscriptions to the backend
     addedSubscriptions.forEach((subscription) => {
-      setAllSubs([...allSubs, subscription]);
+      console.log(allSubs);
       axios
         .post(
           `http://ec2-3-106-116-28.ap-southeast-2.compute.amazonaws.com:8080/subscription/${userContext}`,
@@ -66,6 +66,7 @@ function DashboardAddSubForm() {
         .then((response) => {
           console.log(response);
           setSuccessMessage(true);
+          setAllSubs([...allSubs, addedSubscriptions]);
           setAddedSubscriptions([]);
         });
     });
